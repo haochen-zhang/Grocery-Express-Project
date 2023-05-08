@@ -1,0 +1,104 @@
+Welcome to the Grocery Express Delivery Service - Client!
+Connected to 172.17.0.2, port 6310
+> // SOLAR DRONE MULTIPLE CLOSE DELIVERY
+> // make store, customers near the store and a solar-powered drone
+> make_store,kroger,33000,0,0
+> make_customer,aapple,Alana,Apple,2,4,100,1,0
+> make_customer,apear,Bob,Pear,2,4,100,3,0
+> make_customer,agrape,Kate,Grape,2,4,100,5,0
+> make_drone,kroger,1,40,3,3,1,1
+> sell_item,kroger,pear,1
+> make_pilot,1,a,b,1,1,1,1
+> fly_drone,kroger,1,1
+> display_drones,kroger
+> // start orders
+> start_order,kroger,1,1,aapple
+> request_item,kroger,1,pear,1,20
+> start_order,kroger,2,1,apear
+> request_item,kroger,2,pear,2,20
+> start_order,kroger,3,1,agrape
+> request_item,kroger,3,pear,3,20
+> // delivery order
+> set_time,1670083149
+> purchase_order,kroger,1,1670101149
+> purchase_order,kroger,2,1670101150
+> purchase_order,kroger,3,1670101151
+> //display stores
+> display_stores
+> // SOLAR DRONE MULTIPLE CLOSE DELIVERY
+
+> // make store, customers near the store and a solar-powered drone
+
+> make_store,kroger,33000,0,0
+OK:change_completed
+
+> make_customer,aapple,Alana,Apple,2,4,100,1,0
+OK:change_completed
+
+> make_customer,apear,Bob,Pear,2,4,100,3,0
+OK:change_completed
+
+> make_customer,agrape,Kate,Grape,2,4,100,5,0
+OK:change_completed
+
+> make_drone,kroger,1,40,3,3,1,1
+OK:change_completed
+
+> sell_item,kroger,pear,1
+OK:change_completed
+
+> make_pilot,1,a,b,1,1,1,1
+OK:change_completed
+
+> fly_drone,kroger,1,1
+OK:change_completed
+
+> display_drones,kroger
+droneID:1,type:SolarPowered,total_cap:40,num_orders:0,remaining_cap:40,trips_left:3,refuelThreshold:1,speed:3,flown_by:a_b
+OK:display_completed
+
+> // start orders
+
+> start_order,kroger,1,1,aapple
+OK:change_completed
+
+> request_item,kroger,1,pear,1,20
+OK:change_completed
+
+> start_order,kroger,2,1,apear
+OK:change_completed
+
+> request_item,kroger,2,pear,2,20
+OK:change_completed
+
+> start_order,kroger,3,1,agrape
+OK:change_completed
+
+> request_item,kroger,3,pear,3,20
+OK:change_completed
+
+> // delivery order
+
+> set_time,1670083149
+
+> purchase_order,kroger,1,1670101149
+OK:order_scheduled
+
+> purchase_order,kroger,2,1670101150
+OK:order_scheduled
+
+Order completed.
+> purchase_order,kroger,3,1670101151
+OK:order_scheduled
+
+> //display stores
+
+Order completed.
+> display_stores
+name:kroger,revenue:33110,location:(0,0)
+OK:display_completed
+
+Order completed.
+> stop,10
+Client closing gracefully
+Client closed

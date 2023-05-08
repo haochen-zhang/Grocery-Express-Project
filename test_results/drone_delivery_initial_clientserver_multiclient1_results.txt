@@ -1,0 +1,132 @@
+Welcome to the Grocery Express Delivery Service - Client!
+Connected to 172.17.0.2, port 6310
+> // make store, customer near the store and a normal drone, 3 refueling stations
+> make_store,kroger,33000,0,0
+> make_customer,aapple2,Alana,Apple,2,4,100,0,12
+> make_refueling_station,kroger,1,2,0,5
+> make_refueling_station,kroger,2,2,0,10
+> make_refueling_station,kroger,3,2,0,15
+> make_drone,kroger,1,40,4,2,1
+> sell_item,kroger,pear,1
+> make_pilot,1,a,b,1,1,1,1
+> fly_drone,kroger,1,1
+> display_drones,kroger
+> // start order
+> start_order,kroger,1,1,aapple2
+> request_item,kroger,1,pear,3,20
+> // delivery order
+> set_time,1670083149
+> purchase_order,kroger,1,1670101149
+> //display stores
+> display_stores
+> // make store, customer near the store and a normal drone, 3 refueling stations
+
+> make_store,kroger,33000,0,0
+OK:change_completed
+
+> make_customer,aapple2,Alana,Apple,2,4,100,0,12
+OK:change_completed
+
+> make_refueling_station,kroger,1,2,0,5
+OK:change_completed
+
+> make_refueling_station,kroger,2,2,0,10
+OK:change_completed
+
+> make_refueling_station,kroger,3,2,0,15
+OK:change_completed
+
+> make_drone,kroger,1,40,4,2,1
+OK:change_completed
+
+> sell_item,kroger,pear,1
+OK:change_completed
+
+> make_pilot,1,a,b,1,1,1,1
+OK:change_completed
+
+> fly_drone,kroger,1,1
+OK:change_completed
+
+> display_drones,kroger
+droneID:1,type:Normal,total_cap:40,num_orders:0,remaining_cap:40,trips_left:4,refuelThreshold:1,speed:2,flown_by:a_b
+OK:display_completed
+
+> // start order
+
+> start_order,kroger,1,1,aapple2
+OK:change_completed
+
+> request_item,kroger,1,pear,3,20
+OK:change_completed
+
+> // delivery order
+
+> set_time,1670083149
+
+> purchase_order,kroger,1,1670101149
+Created node
+Created node
+Created node
+Created node
+Connected nodes
+Connected nodes
+Connected nodes
+Connected nodes
+Connected nodes
+Connected nodes
+Connected nodes
+Connected nodes
+Connected nodes
+Connected nodes
+Connected nodes
+Connected nodes
+Connected nodes
+Connected nodes
+Connected nodes
+Connected nodes
+Connected nodes
+Adding to path and explored
+Exploring child
+Adding to explored
+Exploring child
+Adding to path and explored
+Exploring child
+Adding to path and explored
+Exploring child
+Adding to explored
+Exploring child
+Adding to path and explored
+Exploring child
+Adding to explored
+Exploring child
+Adding to explored
+Exploring child
+Adding to path and explored
+Found path
+Removing from path and explored
+Exploring child
+Adding to explored
+Exploring child
+Adding to explored
+Removing from path and explored
+Exploring child
+Adding to explored
+Exploring child
+Adding to explored
+Exploring child
+Adding to explored
+Removing from path and explored
+Removing from path and explored
+OK:order_scheduled
+
+> //display stores
+
+> display_stores
+name:kroger,revenue:33060,location:(0,0)
+OK:display_completed
+
+Order completed.
+> stop,10
+Client closing gracefully
+Client closed

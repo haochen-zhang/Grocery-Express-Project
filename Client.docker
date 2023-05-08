@@ -1,0 +1,16 @@
+# Compile our java files in this container
+FROM openjdk:17-slim AS builder
+
+COPY client/src /usr/client/src/cs6310/src
+
+WORKDIR /usr/client/src/cs6310
+RUN find . -name "*.java" | xargs javac -d ./target
+RUN jar cfe client.jar Main -C ./target/ .
+
+# Copy the jar and test scenarios into our final image
+FROM openjdk:17-slim
+WORKDIR /usr/src/cs6310
+COPY test_scenarios ./
+COPY test_results ./
+COPY --from=builder /usr/client/src/cs6310/client.jar ./client.jar
+CMD ["java", "-jar", "client.jar", "commands_00.txt"]

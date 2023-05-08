@@ -1,0 +1,17 @@
+// make store, customer near the store and a normal drone
+make_store,freshmarket,33000,0,0
+make_customer,rando,Randy,Obert,2,4,100,1,0
+make_drone,freshmarket,1,40,3,3,1
+sell_item,freshmarket,pear,1
+make_pilot,3,a,b,1,1,1,1
+fly_drone,freshmarket,1,3
+display_drones,freshmarket
+// start order
+start_order,freshmarket,1,1,aapple2
+request_item,freshmarket,1,pear,20,1
+// delivery order
+set_time,1670083149
+purchase_order,freshmarket,1,1670101149
+//display stores
+display_stores
+stop,10

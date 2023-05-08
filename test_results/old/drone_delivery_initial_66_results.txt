@@ -1,0 +1,212 @@
+Welcome to the Grocery Express Delivery Service!
+> // Flex the errors
+> // Set up initial test environment
+> // make the store
+> make_store,kroger,33000
+OK:change_completed
+> // sell some items
+> sell_item,kroger,pot_roast,5
+OK:change_completed
+> sell_item,kroger,tomato,1
+OK:change_completed
+> sell_item,kroger,potato,1
+OK:change_completed
+> // make a drone
+> make_drone,kroger,1,400,300
+OK:change_completed
+> // make another one without fuel
+> make_drone,kroger,10,10,0
+OK:change_completed
+> // make another one without fuel
+> make_drone,kroger,11,10,0
+OK:change_completed
+> // make another perfectly fine one
+> make_drone,kroger,12,100,100
+OK:change_completed
+> // make one without capacity for anything
+> make_drone,kroger,13,0,10
+OK:change_completed
+> // create a pilot
+> make_pilot,ffig8,Finneas,Fig,888-888-8888,890-12-3456,panam_10,33
+OK:change_completed
+> // create another one to switch out
+> make_pilot,fabagnale,Frank,Abagnale,888-888-8888,890-12-3456,catch_me,3000
+OK:change_completed
+> // frank should fly without fuel
+> fly_drone,kroger,10,fabagnale
+OK:change_completed
+> // create a customer and an order
+> make_customer,aapple2,Alana,Apple,222-222-2222,4,1000
+OK:change_completed
+> start_order,kroger,purchaseA,1,aapple2
+OK:change_completed
+> start_order,kroger,nofuel,10,aapple2
+OK:change_completed
+> start_order,kroger,nopilot,11,aapple2
+OK:change_completed
+> // add an item to the order
+> request_item,kroger,purchaseA,pot_roast,3,9
+OK:change_completed
+> // add another item
+> request_item,kroger,purchaseA,tomato,3,7
+OK:change_completed
+> // Testing Errors:
+> // make_store: someone already exists
+> make_store,kroger,23000
+ERROR:store_identifier_already_exists
+> // sell_item: bad store
+> sell_item,krogerbad,tomato,5
+ERROR:store_identifier_does_not_exist
+> // sell_item: already exists
+> sell_item,kroger,tomato,5
+ERROR:item_identifier_already_exists
+> // display_items: bad store
+> display_items,krogerbad
+ERROR:store_identifier_does_not_exist
+> // make_pilot: pilot already exists
+> make_pilot,ffig8,Finneas,Fig,888-888-8888,890-12-3456,panam_11,33
+ERROR:pilot_identifier_already_exists
+> // make_pilot: license already exists
+> make_pilot,ffig9,Finneas,Fig,888-888-8888,890-12-3456,panam_10,33
+ERROR:pilot_license_already_exists
+> // make_pilot: both exist (pilot comes first)
+> make_pilot,ffig8,Finneas,Fig,888-888-8888,890-12-3456,panam_10,33
+ERROR:pilot_identifier_already_exists
+> // make_drone: bad store
+> make_drone,krogerbad,2,400,300
+ERROR:store_identifier_does_not_exist
+> // make_drone: duplicate
+> make_drone,kroger,1,400,300
+ERROR:drone_identifier_already_exists
+> // make_drone: store, duplicate
+> make_drone,krogerbad,1,400,300
+ERROR:store_identifier_does_not_exist
+> // display_drones: bad store
+> display_drones,krogerbad
+ERROR:store_identifier_does_not_exist
+> // fly_drone: bad store
+> fly_drone,krogerbad,1,ffig8
+ERROR:store_identifier_does_not_exist
+> // fly_drone: bad drone
+> fly_drone,kroger,2,ffig8
+ERROR:drone_identifier_does_not_exist
+> // fly_drone: bad pilot
+> fly_drone,kroger,1,ffig9
+ERROR:pilot_identifier_does_not_exist
+> // fly_drone: all
+> fly_drone,krogerbad,2,ffig9
+ERROR:store_identifier_does_not_exist
+> // fly_drone: drone,pilot
+> fly_drone,kroger,2,ffig9
+ERROR:drone_identifier_does_not_exist
+> // make_customer: duplicate
+> make_customer,aapple2,Alana,Apple,222-222-2222,4,100
+ERROR:customer_identifier_already_exists
+> // start_order: bad store
+> start_order,krogerbad,purchaseA,1,aapple2
+ERROR:store_identifier_does_not_exist
+> // start_order: duplicate order
+> start_order,kroger,purchaseA,1,aapple2
+ERROR:order_identifier_already_exists
+> // start_order: bad drone
+> start_order,kroger,purchaseB,2,aapple2
+ERROR:drone_identifier_does_not_exist
+> // start_order: bad customer
+> start_order,kroger,purchaseB,1,aapple3
+ERROR:customer_identifier_does_not_exist
+> // start_order: all
+> start_order,krogerbad,purchaseA,2,aapple3
+ERROR:store_identifier_does_not_exist
+> // start_order: duplicate,drone,customer
+> start_order,kroger,purchaseA,2,aapple3
+ERROR:order_identifier_already_exists
+> // start_order: drone,customer
+> start_order,kroger,purchaseB,2,aapple3
+ERROR:drone_identifier_does_not_exist
+> // display_orders: bad store
+> display_orders,krogerbad
+ERROR:store_identifier_does_not_exist
+> // request_item: bad store
+> request_item,krogerbad,purchaseA,potato,3,9
+ERROR:store_identifier_does_not_exist
+> // request_item: bad order
+> request_item,kroger,purchaseB,potato,3,9
+ERROR:order_identifier_does_not_exist
+> // request_item: bad item
+> request_item,kroger,purchaseA,fdas,3,9
+ERROR:item_identifier_does_not_exist
+> // request_item: item already ordered
+> request_item,kroger,purchaseA,tomato,3,9
+ERROR:item_already_ordered
+> // request_item: can't afford
+> request_item,kroger,purchaseA,potato,3,100000
+ERROR:customer_cant_afford_new_item
+> // request_item: can't carry
+> request_item,kroger,purchaseA,potato,3000,0
+ERROR:drone_cant_carry_new_item
+> // request_item: all
+> request_item,krogerbad,purchaseB,pofdsatato,30000,900000
+ERROR:store_identifier_does_not_exist
+> // request_item: bad order, bad item, can't afford, can't carry
+> request_item,kroger,purchaseB,pofdsatato,30000,900000
+ERROR:order_identifier_does_not_exist
+> // request_item: bad order, dup item, can't afford, can't carry
+> request_item,kroger,purchaseB,tomato,30000,900000
+ERROR:order_identifier_does_not_exist
+> // request_item: bad item, can't afford, can't carry
+> request_item,kroger,purchaseA,fds,30000,900000
+ERROR:item_identifier_does_not_exist
+> // request_item: dup item, can't afford, can't carry
+> request_item,kroger,purchaseA,tomato,30000,900000
+ERROR:item_already_ordered
+> // request_item: can't afford, can't carry
+> request_item,kroger,purchaseA,potato,30000,900000
+ERROR:customer_cant_afford_new_item
+> // purchase_order: bad store
+> purchase_order,krogerbad,purchaseA
+ERROR:store_identifier_does_not_exist
+> // purchase_order: bad order
+> purchase_order,kroger,purchaseB
+ERROR:order_identifier_does_not_exist
+> // purchase_order: no pilot
+> purchase_order,kroger,purchaseA
+ERROR:drone_needs_pilot
+> // purchase_order: no fuel
+> purchase_order,kroger,nofuel
+ERROR:drone_needs_fuel
+> // purchase_order: bad identifiers
+> purchase_order,krogerbad,purchaseB
+ERROR:store_identifier_does_not_exist
+> // purchase_order: no pilot & no fuel
+> purchase_order,kroger,nopilot
+ERROR:drone_needs_pilot
+> // cancel_order: bad store
+> cancel_order,krogerbad,purchaseA
+ERROR:store_identifier_does_not_exist
+> // cancel_order: bad order
+> cancel_order,kroger,purchaseB
+ERROR:order_identifier_does_not_exist
+> // transfer_order: bad store
+> transfer_order,krogerbad,purchaseA,12
+ERROR:store_identifier_does_not_exist
+> // transfer_order: bad order
+> transfer_order,kroger,purchaseB,12
+ERROR:order_identifier_does_not_exist
+> // transfer_order: bad drone
+> transfer_order,kroger,purchaseA,2
+ERROR:drone_identifier_does_not_exist
+> // transfer_order: new drone doesn't have capacity
+> transfer_order,kroger,purchaseA,13
+ERROR:new_drone_does_not_have_enough_capacity
+> // transfer_order: ok bc new drone = current drone
+> transfer_order,kroger,purchaseA,1
+OK:new_drone_is_current_drone_no_change
+> // transfer_order: bad identifiers
+> transfer_order,krogerbad,purchaseB,2
+ERROR:store_identifier_does_not_exist
+> // transfer_order: bad order, bad drone
+> transfer_order,kroger,purchaseB,2
+ERROR:order_identifier_does_not_exist
+> stop
+stop acknowledged
+simulation terminated

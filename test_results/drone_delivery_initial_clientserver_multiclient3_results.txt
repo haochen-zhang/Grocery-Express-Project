@@ -1,0 +1,68 @@
+Welcome to the Grocery Express Delivery Service - Client!
+Connected to 172.17.0.2, port 6310
+> // make store, customer near the store and a normal drone
+> make_store,freshmarket,33000,0,0
+> make_customer,rando,Randy,Obert,2,4,100,1,0
+> make_drone,freshmarket,1,40,3,3,1
+> sell_item,freshmarket,pear,1
+> make_pilot,3,a,b,1,1,1,1
+> fly_drone,freshmarket,1,3
+> display_drones,freshmarket
+> // start order
+> start_order,freshmarket,1,1,aapple2
+> request_item,freshmarket,1,pear,20,1
+> // delivery order
+> set_time,1670083149
+> purchase_order,freshmarket,1,1670101149
+> //display stores
+> display_stores
+> // make store, customer near the store and a normal drone
+
+> make_store,freshmarket,33000,0,0
+OK:change_completed
+
+> make_customer,rando,Randy,Obert,2,4,100,1,0
+OK:change_completed
+
+> make_drone,freshmarket,1,40,3,3,1
+OK:change_completed
+
+> sell_item,freshmarket,pear,1
+OK:change_completed
+
+> make_pilot,3,a,b,1,1,1,1
+ERROR:pilot_license_already_exists
+
+> fly_drone,freshmarket,1,3
+ERROR:pilot_identifier_does_not_exist
+
+> display_drones,freshmarket
+droneID:1,type:Normal,total_cap:40,num_orders:0,remaining_cap:40,trips_left:3,refuelThreshold:1,speed:3
+OK:display_completed
+
+> // start order
+
+> start_order,freshmarket,1,1,aapple2
+OK:change_completed
+
+> request_item,freshmarket,1,pear,20,1
+OK:change_completed
+
+> // delivery order
+
+> set_time,1670083149
+
+> purchase_order,freshmarket,1,1670101149
+ERROR:drone_needs_pilot
+
+> //display stores
+
+> display_stores
+name:freshmarket,revenue:33000,location:(0,0)
+name:kroger,revenue:32970,location:(0,0)
+name:publix,revenue:10000,location:(0,0)
+OK:display_completed
+
+> stop,10
+Client closing gracefully
+Client closed

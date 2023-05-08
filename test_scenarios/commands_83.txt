@@ -1,0 +1,14 @@
+// NORMAL DRONE WITH REFUEL STATION OUT OF SERVICE (FAIL)
+make_store,kroger,33000,0,0
+make_customer,aapple2,Alana,Apple,2,4,100,0,20
+make_refueling_station,kroger,1,0,0,5
+make_refueling_station,kroger,2,0,0,10
+make_refueling_station,kroger,3,0,0,15
+make_drone,kroger,1,40,2,3,1
+sell_item,kroger,pear,1
+make_pilot,1,a,b,1,1,1,1
+fly_drone,kroger,1,1
+start_order,kroger,1,1,aapple2
+request_item,kroger,1,pear,1,1
+purchase_order,kroger,1,1670101149
+stop,10

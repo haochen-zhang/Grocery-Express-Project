@@ -1,0 +1,105 @@
+Welcome to the Grocery Express Delivery Service - Client!
+Connected to 172.17.0.2, port 6310
+> // CHANGES TO ORIGINAL SYSTEM CLASS INSTANTIATION
+> // make a store with location
+> make_store,kroger,33000,1,1
+> // display store
+> display_stores
+> // make a customer with location
+> make_customer,aapple2,Alana,Apple,222-222-2222,4,100,1,1
+> // display customers
+> display_customers
+> // make a normal drone for store
+> make_drone,kroger,1,40,3,3,1
+> // make a SolarPoweredDrone
+> make_drone,kroger,2,40,3,3,1,1
+> // display drones
+> display_drones,kroger
+> // make a refueling station
+> make_refueling_station,kroger,1,2,3,4
+> // display refueling station for stores
+> display_refueling_stations,kroger
+> // adjust the location of refueling station
+> adjust_refueling_station,kroger,1,1,1
+> // display refueling station for stores
+> display_refueling_stations,kroger
+> // remove refueling station
+> remove_refueling_station,kroger,1
+> // display refueling station for stores
+> display_refueling_stations,kroger
+> // CHANGES TO ORIGINAL SYSTEM CLASS INSTANTIATION
+
+> // make a store with location
+
+> make_store,kroger,33000,1,1
+OK:change_completed
+
+> // display store
+
+> display_stores
+name:kroger,revenue:33000,location:(1,1)
+OK:display_completed
+
+> // make a customer with location
+
+> make_customer,aapple2,Alana,Apple,222-222-2222,4,100,1,1
+OK:change_completed
+
+> // display customers
+
+> display_customers
+name:Alana_Apple,phone:222-222-2222,rating:4,credit:100,location(1,1)
+OK:display_completed
+
+> // make a normal drone for store
+
+> make_drone,kroger,1,40,3,3,1
+OK:change_completed
+
+> // make a SolarPoweredDrone
+
+> make_drone,kroger,2,40,3,3,1,1
+OK:change_completed
+
+> // display drones
+
+> display_drones,kroger
+droneID:1,type:Normal,total_cap:40,num_orders:0,remaining_cap:40,trips_left:3,refuelThreshold:1,speed:3
+droneID:2,type:SolarPowered,total_cap:40,num_orders:0,remaining_cap:40,trips_left:3,refuelThreshold:1,speed:3
+OK:display_completed
+
+> // make a refueling station
+
+> make_refueling_station,kroger,1,2,3,4
+OK:change_completed
+
+> // display refueling station for stores
+
+> display_refueling_stations,kroger
+id:1,location:(3,4),capacity:2
+OK:display_completed
+
+> // adjust the location of refueling station
+
+> adjust_refueling_station,kroger,1,1,1
+OK:change_completed
+
+> // display refueling station for stores
+
+> display_refueling_stations,kroger
+id:1,location:(1,1),capacity:2
+OK:display_completed
+
+> // remove refueling station
+
+> remove_refueling_station,kroger,1
+OK:change_completed
+
+> // display refueling station for stores
+
+> display_refueling_stations,kroger
+OK:display_completed
+
+> stop,10
+Client closing gracefully
+Client closed

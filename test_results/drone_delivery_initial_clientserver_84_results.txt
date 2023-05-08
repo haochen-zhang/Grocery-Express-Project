@@ -1,0 +1,54 @@
+Welcome to the Grocery Express Delivery Service - Client!
+Connected to 172.17.0.2, port 6310
+> // DELIVER_FUEL
+> make_store,kroger,33000,0,0
+> make_customer,aapple2,Alana,Apple,2,4,100,1,0
+> make_drone,kroger,1,40,3,3,1
+> make_drone,kroger,2,40,3,3,1
+> sell_item,kroger,pear,1
+> make_pilot,1,a,b,1,1,1,1
+> fly_drone,kroger,1,1
+> start_order,kroger,1,1,aapple2
+> request_item,kroger,1,pear,1,1
+> purchase_order,kroger,1,1680101149
+> deliver_fuel,kroger,2,1
+> // DELIVER_FUEL
+
+> make_store,kroger,33000,0,0
+OK:change_completed
+
+> make_customer,aapple2,Alana,Apple,2,4,100,1,0
+OK:change_completed
+
+> make_drone,kroger,1,40,3,3,1
+OK:change_completed
+
+> make_drone,kroger,2,40,3,3,1
+OK:change_completed
+
+> sell_item,kroger,pear,1
+OK:change_completed
+
+> make_pilot,1,a,b,1,1,1,1
+OK:change_completed
+
+> fly_drone,kroger,1,1
+OK:change_completed
+
+> start_order,kroger,1,1,aapple2
+OK:change_completed
+
+> request_item,kroger,1,pear,1,1
+OK:change_completed
+
+> purchase_order,kroger,1,1680101149
+OK:order_scheduled
+
+> deliver_fuel,kroger,2,1
+OK:delivery_scheduled
+
+Order completed.
+Drone fuel delivery complete.
+> stop,10
+Client closing gracefully
+Client closed

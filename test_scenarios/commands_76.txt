@@ -1,0 +1,18 @@
+// SOLAR DRONE CLOSE DELIVERY
+// make store, customer near the store and a solar-powered drone
+make_store,kroger,33000,0,0
+make_customer,aapple2,Alana,Apple,2,4,100,1,0
+make_drone,kroger,1,40,3,3,1,1
+sell_item,kroger,pear,1
+make_pilot,1,a,b,1,1,1,1
+fly_drone,kroger,1,1
+display_drones,kroger
+// start order
+start_order,kroger,1,1,aapple2
+request_item,kroger,1,pear,1,20
+// delivery order
+set_time,1670083149
+purchase_order,kroger,1,1670101149
+//display stores
+display_stores
+stop,10

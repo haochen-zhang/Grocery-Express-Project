@@ -1,0 +1,28 @@
+// CHANGES TO ORIGINAL SYSTEM CLASS INSTANTIATION
+// make a store with location
+make_store,kroger,33000,1,1
+// display store
+display_stores
+// make a customer with location
+make_customer,aapple2,Alana,Apple,222-222-2222,4,100,1,1
+// display customers
+display_customers
+// make a normal drone for store
+make_drone,kroger,1,40,3,3,1
+// make a SolarPoweredDrone
+make_drone,kroger,2,40,3,3,1,1
+// display drones
+display_drones,kroger
+// make a refueling station
+make_refueling_station,kroger,1,2,3,4
+// display refueling station for stores
+display_refueling_stations,kroger
+// adjust the location of refueling station
+adjust_refueling_station,kroger,1,1,1
+// display refueling station for stores
+display_refueling_stations,kroger
+// remove refueling station
+remove_refueling_station,kroger,1
+// display refueling station for stores
+display_refueling_stations,kroger
+stop,10

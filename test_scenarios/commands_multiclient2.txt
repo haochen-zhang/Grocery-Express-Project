@@ -1,0 +1,17 @@
+// make store, a customer far from the store and a solar-powered drone
+make_store,publix,10000,0,0
+make_customer,stevem,Steve,Marston,3,3,100,20,21
+make_drone,publix,1,40,3,3,1,1
+sell_item,publix,pear,1
+make_pilot,2,a,b,1,1,1,1
+fly_drone,publix,1,2
+display_drones,publix
+// start order
+start_order,publix,1,1,aapple2
+request_item,publix,1,pear,1,20
+// deliver order
+set_time,1670108551
+purchase_order,publix,1,1670126551
+//display stores
+display_stores
+stop,10

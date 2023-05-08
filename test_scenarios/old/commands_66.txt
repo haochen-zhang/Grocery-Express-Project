@@ -1,0 +1,139 @@
+// Flex the errors
+// Set up initial test environment
+// make the store
+make_store,kroger,33000
+// sell some items
+sell_item,kroger,pot_roast,5
+sell_item,kroger,tomato,1
+sell_item,kroger,potato,1
+// make a drone
+make_drone,kroger,1,400,300
+// make another one without fuel
+make_drone,kroger,10,10,0
+// make another one without fuel
+make_drone,kroger,11,10,0
+// make another perfectly fine one
+make_drone,kroger,12,100,100
+// make one without capacity for anything
+make_drone,kroger,13,0,10
+// create a pilot
+make_pilot,ffig8,Finneas,Fig,888-888-8888,890-12-3456,panam_10,33
+// create another one to switch out
+make_pilot,fabagnale,Frank,Abagnale,888-888-8888,890-12-3456,catch_me,3000
+// frank should fly without fuel
+fly_drone,kroger,10,fabagnale
+// create a customer and an order
+make_customer,aapple2,Alana,Apple,222-222-2222,4,1000
+start_order,kroger,purchaseA,1,aapple2
+start_order,kroger,nofuel,10,aapple2
+start_order,kroger,nopilot,11,aapple2
+// add an item to the order
+request_item,kroger,purchaseA,pot_roast,3,9
+// add another item
+request_item,kroger,purchaseA,tomato,3,7
+// Testing Errors:
+// make_store: someone already exists
+make_store,kroger,23000
+// sell_item: bad store
+sell_item,krogerbad,tomato,5
+// sell_item: already exists
+sell_item,kroger,tomato,5
+// display_items: bad store
+display_items,krogerbad
+// make_pilot: pilot already exists
+make_pilot,ffig8,Finneas,Fig,888-888-8888,890-12-3456,panam_11,33
+// make_pilot: license already exists
+make_pilot,ffig9,Finneas,Fig,888-888-8888,890-12-3456,panam_10,33
+// make_pilot: both exist (pilot comes first)
+make_pilot,ffig8,Finneas,Fig,888-888-8888,890-12-3456,panam_10,33
+// make_drone: bad store
+make_drone,krogerbad,2,400,300
+// make_drone: duplicate
+make_drone,kroger,1,400,300
+// make_drone: store, duplicate
+make_drone,krogerbad,1,400,300
+// display_drones: bad store
+display_drones,krogerbad
+// fly_drone: bad store
+fly_drone,krogerbad,1,ffig8
+// fly_drone: bad drone
+fly_drone,kroger,2,ffig8
+// fly_drone: bad pilot
+fly_drone,kroger,1,ffig9
+// fly_drone: all
+fly_drone,krogerbad,2,ffig9
+// fly_drone: drone,pilot
+fly_drone,kroger,2,ffig9
+// make_customer: duplicate
+make_customer,aapple2,Alana,Apple,222-222-2222,4,100
+// start_order: bad store
+start_order,krogerbad,purchaseA,1,aapple2
+// start_order: duplicate order
+start_order,kroger,purchaseA,1,aapple2
+// start_order: bad drone
+start_order,kroger,purchaseB,2,aapple2
+// start_order: bad customer
+start_order,kroger,purchaseB,1,aapple3
+// start_order: all
+start_order,krogerbad,purchaseA,2,aapple3
+// start_order: duplicate,drone,customer
+start_order,kroger,purchaseA,2,aapple3
+// start_order: drone,customer
+start_order,kroger,purchaseB,2,aapple3
+// display_orders: bad store
+display_orders,krogerbad
+// request_item: bad store
+request_item,krogerbad,purchaseA,potato,3,9
+// request_item: bad order
+request_item,kroger,purchaseB,potato,3,9
+// request_item: bad item
+request_item,kroger,purchaseA,fdas,3,9
+// request_item: item already ordered
+request_item,kroger,purchaseA,tomato,3,9
+// request_item: can't afford
+request_item,kroger,purchaseA,potato,3,100000
+// request_item: can't carry
+request_item,kroger,purchaseA,potato,3000,0
+// request_item: all
+request_item,krogerbad,purchaseB,pofdsatato,30000,900000
+// request_item: bad order, bad item, can't afford, can't carry
+request_item,kroger,purchaseB,pofdsatato,30000,900000
+// request_item: bad order, dup item, can't afford, can't carry
+request_item,kroger,purchaseB,tomato,30000,900000
+// request_item: bad item, can't afford, can't carry
+request_item,kroger,purchaseA,fds,30000,900000
+// request_item: dup item, can't afford, can't carry
+request_item,kroger,purchaseA,tomato,30000,900000
+// request_item: can't afford, can't carry
+request_item,kroger,purchaseA,potato,30000,900000
+// purchase_order: bad store
+purchase_order,krogerbad,purchaseA
+// purchase_order: bad order
+purchase_order,kroger,purchaseB
+// purchase_order: no pilot
+purchase_order,kroger,purchaseA
+// purchase_order: no fuel
+purchase_order,kroger,nofuel
+// purchase_order: bad identifiers
+purchase_order,krogerbad,purchaseB
+// purchase_order: no pilot & no fuel
+purchase_order,kroger,nopilot
+// cancel_order: bad store
+cancel_order,krogerbad,purchaseA
+// cancel_order: bad order
+cancel_order,kroger,purchaseB
+// transfer_order: bad store
+transfer_order,krogerbad,purchaseA,12
+// transfer_order: bad order
+transfer_order,kroger,purchaseB,12
+// transfer_order: bad drone
+transfer_order,kroger,purchaseA,2
+// transfer_order: new drone doesn't have capacity
+transfer_order,kroger,purchaseA,13
+// transfer_order: ok bc new drone = current drone
+transfer_order,kroger,purchaseA,1
+// transfer_order: bad identifiers
+transfer_order,krogerbad,purchaseB,2
+// transfer_order: bad order, bad drone
+transfer_order,kroger,purchaseB,2
+stop
